@@ -1,0 +1,38 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 22,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "Default Config",
+      "description": "Default build uses libc++, compiler-rt (with external libunwind), lld",
+      "binaryDir": "${sourceDir}/build/default",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "/usr/bin/clang++-12",
+        "CMAKE_CXX_FLAGS": "-Wpedantic -Wall -Wextra -stdlib=libc++",
+        "CMAKE_SHARED_LINKER_FLAGS_CXX": "-fuse-ld=lld -rtlib=compiler-rt -lunwind",
+        "CMAKE_EXE_LINKER_FLAGS": "-fuse-ld=lld -rtlib=compiler-rt -lunwind",
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_CLANG_TIDY": "/usr/bin/clang-tidy-12",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_TOOLCHAIN_FILE": "~/sandbox/temp/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "default",
+      "configurePreset": "default"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "default",
+      "configurePreset": "default"
+    }
+  ]
+}
