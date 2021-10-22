@@ -7,21 +7,25 @@
   },
   "configurePresets": [
     {
-
       "name": "default",
       "displayName": "Default Config",
       "description": "Default build uses libc++, compiler-rt (with external libunwind), lld",
       "binaryDir": "${sourceDir}/build/default",
       "toolchainFile": "~/sandbox/temp/vcpkg/scripts/buildsystems/vcpkg.cmake",
+      "environment": {
+          "CXX": "/usr/bin/clang++-12",
+          "CXXFLAGS": "-Wpedantic -Wall -Wextra -stdlib=libc++",
+          "CC": "/usr/bin/clang-12"
+      },
       "cacheVariables": {
-        "CMAKE_CXX_COMPILER": "/usr/bin/clang++-12",
-        "CMAKE_CXX_FLAGS": "-Wpedantic -Wall -Wextra -stdlib=libc++",
-        "CMAKE_SHARED_LINKER_FLAGS_CXX": "-fuse-ld=lld -rtlib=compiler-rt -lunwind",
-        "CMAKE_EXE_LINKER_FLAGS": "-fuse-ld=lld -rtlib=compiler-rt -lunwind",
         "CMAKE_BUILD_TYPE": "Debug",
         "CMAKE_CXX_CLANG_TIDY": "/usr/bin/clang-tidy-12",
+        "CMAKE_EXE_LINKER_FLAGS_INIT": "-fuse-ld=lld -rtlib=compiler-rt -lunwind",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-        "VCPKG_TARGET_TRIPLET": "x64-linux-clang-libcxx"
+        "CMAKE_SHARED_LINKER_FLAGS_INIT": "-fuse-ld=lld -rtlib=compiler-rt -lunwind",
+        "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/cmake",
+        "VCPKG_TARGET_TRIPLET": "x64-linux-clang-libcxx",
+        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/cmake/x64-linux-clang-12-libcxx-ldd.toolchain.cmake"
       }
     }
   ],
