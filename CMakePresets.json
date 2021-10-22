@@ -7,10 +7,12 @@
   },
   "configurePresets": [
     {
+
       "name": "default",
       "displayName": "Default Config",
       "description": "Default build uses libc++, compiler-rt (with external libunwind), lld",
       "binaryDir": "${sourceDir}/build/default",
+      "toolchainFile": "~/sandbox/temp/vcpkg/scripts/buildsystems/vcpkg.cmake",
       "cacheVariables": {
         "CMAKE_CXX_COMPILER": "/usr/bin/clang++-12",
         "CMAKE_CXX_FLAGS": "-Wpedantic -Wall -Wextra -stdlib=libc++",
@@ -19,7 +21,7 @@
         "CMAKE_BUILD_TYPE": "Debug",
         "CMAKE_CXX_CLANG_TIDY": "/usr/bin/clang-tidy-12",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-        "CMAKE_TOOLCHAIN_FILE": "~/sandbox/temp/vcpkg/scripts/buildsystems/vcpkg.cmake"
+        "VCPKG_TARGET_TRIPLET": "x64-linux-clang-libcxx"
       }
     }
   ],
