@@ -13,19 +13,16 @@
       "binaryDir": "${sourceDir}/build/default",
       "toolchainFile": "~/sandbox/temp/vcpkg/scripts/buildsystems/vcpkg.cmake",
       "environment": {
-          "CXX": "/usr/bin/clang++-12",
-          "CXXFLAGS": "-Wpedantic -Wall -Wextra -stdlib=libc++",
-          "CC": "/usr/bin/clang-12"
+          "PROJECT_DIR": "${sourceDir}"
       },
       "cacheVariables": {
+        "CMAKE_CXX_FLAGS_INIT": "-Wpedantic -Wall -Wextra",
         "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_CXX_CLANG_TIDY": "/usr/bin/clang-tidy-12",
-        "CMAKE_EXE_LINKER_FLAGS_INIT": "-fuse-ld=lld -rtlib=compiler-rt -lunwind",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-        "CMAKE_SHARED_LINKER_FLAGS_INIT": "-fuse-ld=lld -rtlib=compiler-rt -lunwind",
         "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/cmake",
         "VCPKG_TARGET_TRIPLET": "x64-linux-clang-libcxx",
-        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/cmake/x64-linux-clang-12-libcxx-ldd.toolchain.cmake"
+        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/cmake/x64-linux-clang-12-libcxx-ldd.toolchain.cmake",
+        "VCPKG_MANIFEST_INSTALL": "OFF"
       }
     }
   ],

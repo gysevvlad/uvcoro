@@ -1,3 +1,5 @@
-set(CMAKE_CXX_COMPILER_INIT "/usr/bin/clang++-12")
-set(CMAKE_CXX_FLAGS_INIT "-stdlib=libc++")
-set(CMAKE_EXE_LINKER_FLAGS_INIT "-fuse-ld=lld -rtlib=compiler-rt -lunwind")
+set(CMAKE_C_COMPILER "/usr/bin/clang-12")
+set(CMAKE_CXX_COMPILER "/usr/bin/clang++-12")
+set(CMAKE_CXX_FLAGS_INIT " -fPIC -stdlib=libc++ -fcoroutines-ts ")
+set(CMAKE_EXE_LINKER_FLAGS_INIT " -fuse-ld=lld -rtlib=compiler-rt -lunwind ")
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
